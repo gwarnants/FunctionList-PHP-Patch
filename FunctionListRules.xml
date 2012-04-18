@@ -120,6 +120,19 @@
             <Rules regexbeg="^SubSection\&gt;.*\s+" regexfunc="[-.\w_ ]+" regexend='\&quot;$' bodybegin="" bodyend="\&lt;SubSectionEnd\&gt;" sep="" />
         </Group>
     </Language>
+    <Language name="VHDL" imagelistpath="">
+        <CommList param1="--" param2="" />
+        <Group name="ENTITY" subgroup="" icon="0" child="0" autoexp="0" matchcase="0" fendtobbeg="\&lt;FUNCTION\&gt;|\&lt;PROCEDURE\&gt;" bbegtobend="\&lt;IF\&gt;|\&lt;COMPONENT\&gt;|\&lt;LOOP\&gt;|\&lt;CASE\&gt;|\&lt;BEGIN\&gt;" keywords="">
+            <Rules regexbeg="ENTITY\s+" regexfunc="[\w_]+" regexend="\s+IS" bodybegin="" bodyend="\&lt;END\&gt;.*;" sep="" />
+        </Group>
+        <Group name="FUNCTION" subgroup="" icon="0" child="0" autoexp="0" matchcase="0" fendtobbeg="" bbegtobend="" keywords="">
+            <Rules regexbeg="function\s+" regexfunc='[\w_&quot;\+-\*/]+' regexend="\s*\([\w_,;:\s\(\)]*\)" bodybegin="\&lt;BEGIN\&gt;" bodyend="\&lt;END\&gt;.*;" sep="" />
+        </Group>
+        <Group name="PROCEDURE" subgroup="" icon="0" child="0" autoexp="0" matchcase="0" fendtobbeg="\&lt;FUNCTION\&gt;|\&lt;PROCEDURE\&gt;" bbegtobend="\&lt;IF\&gt;|\&lt;COMPONENT\&gt;|\&lt;LOOP\&gt;|\&lt;CASE\&gt;|\&lt;BEGIN\&gt;" keywords="">
+            <Rules regexbeg="procedure\s+" regexfunc='[\w_&quot;\+-\*/]+' regexend="\s*\([\w_,;:\s\(\)]*\)" bodybegin="\&lt;BEGIN\&gt;" bodyend="\&lt;END\&gt;.*;" sep="" />
+            <Rules regexbeg="procedure\s+" regexfunc='[\w_&quot;\+-\*/]+' regexend="" bodybegin="\&lt;BEGIN\&gt;" bodyend="\&lt;END\&gt;.*;" sep="" />
+        </Group>
+    </Language>
     <Language name="VB" imagelistpath="">
         <Group name="FUNCTION" subgroup="" icon="0" child="0" autoexp="0" matchcase="0" fendtobbeg="" bbegtobend="" keywords="">
             <Rules regexbeg="function\s+" regexfunc="[\w_]+" regexend="\s*\(.*\)" bodybegin="" bodyend="\&lt;end\s+function\&gt;" sep="" />
@@ -128,6 +141,21 @@
         <Group name="SUBROUTINE" subgroup="" icon="0" child="0" autoexp="0" matchcase="0" fendtobbeg="" bbegtobend="" keywords="">
             <Rules regexbeg="sub\s+" regexfunc="[\w_]+" regexend="\s*\(.*\)" bodybegin="" bodyend="\&lt;end\s+sub\&gt;" sep="" />
             <Rules regexbeg="sub\s+" regexfunc="[\w_]+" regexend="" bodybegin="" bodyend="\&lt;end\s+sub\&gt;" sep="" />
+        </Group>
+    </Language>
+    <Language name="Assembler" imagelistpath="">
+        <CommList param1=";" param2="" />
+        <CommList param1="\/\*" param2="\*\/" />
+        <Group name="SECTION" subgroup="" icon="0" child="0" autoexp="4" matchcase="0" fendtobbeg="" bbegtobend="" keywords="">
+            <Rules regexbeg="^\s*" regexfunc="\.const" regexend="\s*" bodybegin="" bodyend="$" sep="" />
+            <Rules regexbeg="^\s*" regexfunc="\.data" regexend="\s*" bodybegin="" bodyend="$" sep="" />
+            <Rules regexbeg="^\s*" regexfunc="\.code" regexend="\s*" bodybegin="" bodyend="$" sep="" />
+            <Rules regexbeg="^\s*" regexfunc="start:" regexend="\s*" bodybegin="" bodyend="$" sep="" />
+            <Rules regexbeg="^\s*section\s*" regexfunc=".*" regexend="" bodybegin="" bodyend="$" sep="" />
+        </Group>
+        <Group name="PROC" subgroup="" icon="0" child="0" autoexp="4" matchcase="0" fendtobbeg="" bbegtobend="" keywords="">
+            <Rules regexbeg="" regexfunc="[\w_]+" regexend="\s+proc\&gt;" bodybegin="" bodyend="\&lt;[\w_]+\s+endp\&gt;" sep="" />
+            <Rules regexbeg="^\s*proc\s+" regexfunc="[\w_]+" regexend="" bodybegin="" bodyend="\&lt;endp\&gt;" sep="" />
         </Group>
     </Language>
     <Language name="Batch" imagelistpath="">
@@ -238,75 +266,6 @@
             <Rules regexbeg="\&lt;sub\s+" regexfunc="[\w_]+" regexend="\&gt;" bodybegin="\{" bodyend="\}" sep="" />
         </Group>
     </Language>
-    <Language name="awk" imagelistpath="">
-        <CommList param1="#" param2="" />
-        <Group name="BEGIN/END" subgroup="" icon="0" child="0" autoexp="0" matchcase="1" fendtobbeg="" bbegtobend="" keywords="">
-            <Rules regexbeg="[ \t]*" regexfunc="BEGIN" regexend="[ \t$]+" bodybegin="\{" bodyend="\}" sep="" />
-            <Rules regexbeg="[ \t]*" regexfunc="END" regexend="[ \t$]+" bodybegin="\{" bodyend="\}" sep="" />
-        </Group>
-        <Group name="FUNCTION" subgroup="" icon="0" child="0" autoexp="0" matchcase="1" fendtobbeg="" bbegtobend="" keywords="">
-            <Rules regexbeg="[ \t]*function[ \t]+" regexfunc="[a-zA-Z0-9_]+" regexend="\([a-zA-Z0-9_=, \t]*\)" bodybegin="\{" bodyend="\}" sep="" />
-            <Rules regexbeg="[ \t]*function[ \t]+" regexfunc="[a-zA-Z0-9_]+" regexend="\([a-zA-Z0-9_=, \t]*\)[ \t]+\{" bodybegin="\{" bodyend="\}" sep="" />
-        </Group>
-    </Language>
-    <Language name="AHK Autohotkey" imagelistpath="">
-        <CommList param1="/\*" param2="\*/" />
-        <Group name="FUNCTION" subgroup="" icon="0" child="0" autoexp="0" matchcase="0" fendtobbeg="" bbegtobend="" keywords="">
-            <Rules regexbeg="^" regexfunc="[a-zA-Z0-9@?#\[\]_]+" regexend="\([^(]*\)" bodybegin="{" bodyend="}" sep="$" />
-        </Group>
-        <Group name="SUB" subgroup="" icon="0" child="0" autoexp="0" matchcase="0" fendtobbeg="" bbegtobend="" keywords="">
-            <Rules regexbeg="^" regexfunc="[a-zA-Z0-9@?#\[\]_&apos;-]+[:]" regexend="[ \t]*$" bodybegin="" bodyend="^[r]eturn[ \t]*$" sep="$" />
-            <Rules regexbeg="^" regexfunc="[a-zA-Z0-9@?#\[\]_&apos;-]+[:]" regexend="[ \t]*[;].*$" bodybegin="" bodyend="^[r]eturn[ \t]*$" sep="" />
-        </Group>
-        <Group name="INCLUDE" subgroup="" icon="0" child="0" autoexp="0" matchcase="0" fendtobbeg="" bbegtobend="" keywords="">
-            <Rules regexbeg="^" regexfunc="#include[ \t]+[a-zA-Z0-9_.\\]+" regexend="" bodybegin="" bodyend="$" sep="" />
-        </Group>
-        <Group name="HOTKEYS" subgroup="" icon="0" child="0" autoexp="0" matchcase="0" fendtobbeg="" bbegtobend="" keywords="">
-            <Rules regexbeg="^" regexfunc="[#!^+&amp;*~$ -=\[\]\\;&apos;,./A-Za-z0-9]+[:][:]" regexend="" bodybegin="" bodyend="" sep="" />
-            <Rules regexbeg="^" regexfunc="[^;][#!^+&amp;*~$ -=\[\]\\;&apos;,./A-Za-z0-9]+[:][:][ \t]*[;].*$" regexend="" bodybegin="" bodyend="^[r]eturn[ \t]*$" sep="$" />
-        </Group>
-    </Language>
-    <Language name="Gmod Lua" imagelistpath="plugins\Config\Gmod Lua.bmp">
-        <CommList param1="//" param2="" />
-        <CommList param1="/\*" param2="\*/" />
-        <CommList param1="--" param2="" />
-        <CommList param1="--\[\[" param2="\]\]" />
-        <CommList param1='[^\\]&quot;' param2='[^\\]&quot;' />
-        <CommList param1="[^\\]&apos;" param2="[^\\]&apos;" />
-        <Group name="FUNCTION" subgroup="" icon="0" child="0" autoexp="0" matchcase="1" fendtobbeg="" bbegtobend="\&lt;do\&gt;|\&lt;if\&gt;|\&lt;function\&gt;" keywords="">
-            <Rules regexbeg="[-\s]*function\s+" regexfunc="[\w_:.]+" regexend="\s*\([\w_,.\s]*\)" bodybegin="" bodyend="\&lt;end\&gt;" sep="" />
-            <Rules regexbeg="^[-\s]*" regexfunc="[\w_:.]+" regexend="\s*=\s*function\s*\([\w_,\s]*\)" bodybegin="" bodyend="\&lt;end\&gt;" sep="" />
-            <Rules regexbeg="^" regexfunc="[\w_]+" regexend="\s*=" bodybegin="\{" bodyend="\}" sep="" />
-        </Group>
-    </Language>
-    <Language name="Assembler" imagelistpath="">
-        <CommList param1=";" param2="" />
-        <CommList param1="\/\*" param2="\*\/" />
-        <Group name="SECTION" subgroup="" icon="0" child="0" autoexp="4" matchcase="0" fendtobbeg="" bbegtobend="" keywords="">
-            <Rules regexbeg="^\s*" regexfunc="\.const" regexend="\s*" bodybegin="" bodyend="$" sep="" />
-            <Rules regexbeg="^\s*" regexfunc="\.data" regexend="\s*" bodybegin="" bodyend="$" sep="" />
-            <Rules regexbeg="^\s*" regexfunc="\.code" regexend="\s*" bodybegin="" bodyend="$" sep="" />
-            <Rules regexbeg="^\s*" regexfunc="start:" regexend="\s*" bodybegin="" bodyend="$" sep="" />
-            <Rules regexbeg="^\s*section\s*" regexfunc=".*" regexend="" bodybegin="" bodyend="$" sep="" />
-        </Group>
-        <Group name="PROC" subgroup="" icon="0" child="0" autoexp="4" matchcase="0" fendtobbeg="" bbegtobend="" keywords="">
-            <Rules regexbeg="" regexfunc="[\w_]+" regexend="\s+proc\&gt;" bodybegin="" bodyend="\&lt;[\w_]+\s+endp\&gt;" sep="" />
-            <Rules regexbeg="^\s*proc\s+" regexfunc="[\w_]+" regexend="" bodybegin="" bodyend="\&lt;endp\&gt;" sep="" />
-        </Group>
-    </Language>
-    <Language name="VHDL" imagelistpath="">
-        <CommList param1="--" param2="" />
-        <Group name="ENTITY" subgroup="" icon="0" child="0" autoexp="0" matchcase="0" fendtobbeg="\&lt;FUNCTION\&gt;|\&lt;PROCEDURE\&gt;" bbegtobend="\&lt;IF\&gt;|\&lt;COMPONENT\&gt;|\&lt;LOOP\&gt;|\&lt;CASE\&gt;|\&lt;BEGIN\&gt;" keywords="">
-            <Rules regexbeg="ENTITY\s+" regexfunc="[\w_]+" regexend="\s+IS" bodybegin="" bodyend="\&lt;END\&gt;.*;" sep="" />
-        </Group>
-        <Group name="FUNCTION" subgroup="" icon="0" child="0" autoexp="0" matchcase="0" fendtobbeg="" bbegtobend="" keywords="">
-            <Rules regexbeg="function\s+" regexfunc='[\w_&quot;\+-\*/]+' regexend="\s*\([\w_,;:\s\(\)]*\)" bodybegin="\&lt;BEGIN\&gt;" bodyend="\&lt;END\&gt;.*;" sep="" />
-        </Group>
-        <Group name="PROCEDURE" subgroup="" icon="0" child="0" autoexp="0" matchcase="0" fendtobbeg="\&lt;FUNCTION\&gt;|\&lt;PROCEDURE\&gt;" bbegtobend="\&lt;IF\&gt;|\&lt;COMPONENT\&gt;|\&lt;LOOP\&gt;|\&lt;CASE\&gt;|\&lt;BEGIN\&gt;" keywords="">
-            <Rules regexbeg="procedure\s+" regexfunc='[\w_&quot;\+-\*/]+' regexend="\s*\([\w_,;:\s\(\)]*\)" bodybegin="\&lt;BEGIN\&gt;" bodyend="\&lt;END\&gt;.*;" sep="" />
-            <Rules regexbeg="procedure\s+" regexfunc='[\w_&quot;\+-\*/]+' regexend="" bodybegin="\&lt;BEGIN\&gt;" bodyend="\&lt;END\&gt;.*;" sep="" />
-        </Group>
-    </Language>
     <Language name="C" imagelistpath="">
         <CommList param1="//" param2="" />
         <CommList param1="/\*" param2="\*/" />
@@ -390,16 +349,69 @@
             <Rules regexbeg="#if[ndef]*\s+" regexfunc=".*" regexend="" bodybegin="" bodyend="#endif" sep="" />
         </Group>
     </Language>
-    <!-- PHP Language rules by Geoffray Warnants (http://www.geoffray.be) -->
+    <Language name="awk" imagelistpath="">
+        <CommList param1="#" param2="" />
+        <Group name="BEGIN/END" subgroup="" icon="0" child="0" autoexp="0" matchcase="1" fendtobbeg="" bbegtobend="" keywords="">
+            <Rules regexbeg="[ \t]*" regexfunc="BEGIN" regexend="[ \t$]+" bodybegin="\{" bodyend="\}" sep="" />
+            <Rules regexbeg="[ \t]*" regexfunc="END" regexend="[ \t$]+" bodybegin="\{" bodyend="\}" sep="" />
+        </Group>
+        <Group name="FUNCTION" subgroup="" icon="0" child="0" autoexp="0" matchcase="1" fendtobbeg="" bbegtobend="" keywords="">
+            <Rules regexbeg="[ \t]*function[ \t]+" regexfunc="[a-zA-Z0-9_]+" regexend="\([a-zA-Z0-9_=, \t]*\)" bodybegin="\{" bodyend="\}" sep="" />
+            <Rules regexbeg="[ \t]*function[ \t]+" regexfunc="[a-zA-Z0-9_]+" regexend="\([a-zA-Z0-9_=, \t]*\)[ \t]+\{" bodybegin="\{" bodyend="\}" sep="" />
+        </Group>
+    </Language>
+    <Language name="AHK Autohotkey" imagelistpath="">
+        <CommList param1="/\*" param2="\*/" />
+        <Group name="FUNCTION" subgroup="" icon="0" child="0" autoexp="0" matchcase="0" fendtobbeg="" bbegtobend="" keywords="">
+            <Rules regexbeg="^" regexfunc="[a-zA-Z0-9@?#\[\]_]+" regexend="\([^(]*\)" bodybegin="{" bodyend="}" sep="$" />
+        </Group>
+        <Group name="SUB" subgroup="" icon="0" child="0" autoexp="0" matchcase="0" fendtobbeg="" bbegtobend="" keywords="">
+            <Rules regexbeg="^" regexfunc="[a-zA-Z0-9@?#\[\]_&apos;-]+[:]" regexend="[ \t]*$" bodybegin="" bodyend="^[r]eturn[ \t]*$" sep="$" />
+            <Rules regexbeg="^" regexfunc="[a-zA-Z0-9@?#\[\]_&apos;-]+[:]" regexend="[ \t]*[;].*$" bodybegin="" bodyend="^[r]eturn[ \t]*$" sep="" />
+        </Group>
+        <Group name="INCLUDE" subgroup="" icon="0" child="0" autoexp="0" matchcase="0" fendtobbeg="" bbegtobend="" keywords="">
+            <Rules regexbeg="^" regexfunc="#include[ \t]+[a-zA-Z0-9_.\\]+" regexend="" bodybegin="" bodyend="$" sep="" />
+        </Group>
+        <Group name="HOTKEYS" subgroup="" icon="0" child="0" autoexp="0" matchcase="0" fendtobbeg="" bbegtobend="" keywords="">
+            <Rules regexbeg="^" regexfunc="[#!^+&amp;*~$ -=\[\]\\;&apos;,./A-Za-z0-9]+[:][:]" regexend="" bodybegin="" bodyend="" sep="" />
+            <Rules regexbeg="^" regexfunc="[^;][#!^+&amp;*~$ -=\[\]\\;&apos;,./A-Za-z0-9]+[:][:][ \t]*[;].*$" regexend="" bodybegin="" bodyend="^[r]eturn[ \t]*$" sep="$" />
+        </Group>
+    </Language>
+    <Language name="Gmod Lua" imagelistpath="plugins\Config\Gmod Lua.bmp">
+        <CommList param1="//" param2="" />
+        <CommList param1="/\*" param2="\*/" />
+        <CommList param1="--" param2="" />
+        <CommList param1="--\[\[" param2="\]\]" />
+        <CommList param1='[^\\]&quot;' param2='[^\\]&quot;' />
+        <CommList param1="[^\\]&apos;" param2="[^\\]&apos;" />
+        <Group name="FUNCTION" subgroup="" icon="0" child="0" autoexp="0" matchcase="1" fendtobbeg="" bbegtobend="\&lt;do\&gt;|\&lt;if\&gt;|\&lt;function\&gt;" keywords="">
+            <Rules regexbeg="[-\s]*function\s+" regexfunc="[\w_:.]+" regexend="\s*\([\w_,.\s]*\)" bodybegin="" bodyend="\&lt;end\&gt;" sep="" />
+            <Rules regexbeg="^[-\s]*" regexfunc="[\w_:.]+" regexend="\s*=\s*function\s*\([\w_,\s]*\)" bodybegin="" bodyend="\&lt;end\&gt;" sep="" />
+            <Rules regexbeg="^" regexfunc="[\w_]+" regexend="\s*=" bodybegin="\{" bodyend="\}" sep="" />
+        </Group>
+    </Language>
+    <!--
+    PHP/CSS Language rules by Geoffray Warnants (http://www.geoffray.be)
+    Merge these blocks with your FunctionListRule.xml if you want to keep your own custom rules
+    -->
+    <Language name="CSS" imagelistpath="plugins\Config\php.bmp">
+        <CommList param1="/\*" param2="\*/" />
+        <Group name="IMPORT" subgroup="" icon="2" child="2" autoexp="4" matchcase="0" fendtobbeg="" bbegtobend="" keywords="">
+            <Rules regexbeg="^\s*@import\s+[\w]*[\s\(&quot;]*\s*" regexfunc="[\w./-]+" regexend="[&quot;\)]+[\w\s,]*;$" bodybegin="" bodyend="" sep=";" />
+        </Group>
+        <Group name="SELECTOR" subgroup="" icon="19" child="19" autoexp="4" matchcase="0" fendtobbeg="" bbegtobend="" keywords="">
+            <Rules regexbeg="^\s*[\w.#\s:\[\]=~\*,\+&gt;-]+\s*" regexfunc="[\w.#\s:\[\]=~\*,\+&gt;-]*" regexend="" bodybegin="\{" bodyend="\}" sep=";" />
+        </Group>
+    </Language>
     <Language name="PHP" imagelistpath="plugins\Config\php.bmp">
         <CommList param1="#" param2="" />
         <CommList param1="//" param2="" />
         <CommList param1="/\*" param2="\*/" />
         <Group name="INCLUDE" subgroup="" icon="2" child="2" autoexp="0" matchcase="0" fendtobbeg="" bbegtobend="" keywords="">
-            <Rules regexbeg='^\s*include[\s&apos;&quot;\(]*' regexfunc="[\w./-]+" regexend='[&apos;&quot;\)\s]*;$' bodybegin="" bodyend="" sep="" />
-            <Rules regexbeg='^\s*require[\s&apos;&quot;\(]*' regexfunc="[\w./-]+" regexend='[&apos;&quot;\)\s]*;$' bodybegin="" bodyend="" sep="" />
-            <Rules regexbeg='^\s*include_once[\s&apos;&quot;\(]*' regexfunc="[\w./-]+" regexend='[&apos;&quot;\)\s]*;$' bodybegin="" bodyend="" sep="" />
-            <Rules regexbeg='^\s*require_once[\s&apos;&quot;\(]*' regexfunc="[\w./-]+" regexend='[&apos;&quot;\)\s]*;$' bodybegin="" bodyend="" sep="" />
+            <Rules regexbeg="^\s*include[\s&apos;&quot;\(]*" regexfunc="[\w./-]+" regexend="[&apos;&quot;\)\s]*;$" bodybegin="" bodyend="" sep="" />
+            <Rules regexbeg="^\s*require[\s&apos;&quot;\(]*" regexfunc="[\w./-]+" regexend="[&apos;&quot;\)\s]*;$" bodybegin="" bodyend="" sep="" />
+            <Rules regexbeg="^\s*include_once[\s&apos;&quot;\(]*" regexfunc="[\w./-]+" regexend="[&apos;&quot;\)\s]*;$" bodybegin="" bodyend="" sep="" />
+            <Rules regexbeg="^\s*require_once[\s&apos;&quot;\(]*" regexfunc="[\w./-]+" regexend="[&apos;&quot;\)\s]*;$" bodybegin="" bodyend="" sep="" />
             <Rules regexbeg="^\s*use\s+" regexfunc="[\w\\]+" regexend="[\w\s]*;$" bodybegin="" bodyend="" sep="" />
         </Group>
         <Group name="CLASS" subgroup="" icon="1" child="1" autoexp="4" matchcase="0" fendtobbeg="" bbegtobend="\{" keywords="">
@@ -412,92 +424,92 @@
         </Group>
         <Group name="CONSTANT" subgroup="" icon="8" child="8" autoexp="0" matchcase="0" fendtobbeg="" bbegtobend="" keywords="">
             <Rules regexbeg="^\s*const[\s]+" regexfunc="[\w_]+" regexend="" bodybegin="" bodyend="$" sep="" />
-            <Rules regexbeg='^\s*define\s*[\(&apos;&quot;\)\s]+' regexfunc="[\w_]+" regexend="" bodybegin="" bodyend="$" sep="" />
+            <Rules regexbeg="^\s*define\s*[\(&apos;&quot;\)\s]+" regexfunc="[\w_]+" regexend="" bodybegin="" bodyend="$" sep="" />
         </Group>
         <Group name="PUBLIC VAR" subgroup="" icon="6" child="6" autoexp="0" matchcase="0" fendtobbeg="" bbegtobend="" keywords="">
-            <Rules regexbeg="^\s*public[\s]+" regexfunc="$[\w_]+" regexend="" bodybegin="" bodyend="$" sep="" />
-            <Rules regexbeg="^\s*var[\s]+" regexfunc="$[\w_]+" regexend="" bodybegin="" bodyend="$" sep="" />
+            <Rules regexbeg="^\s*public[\s]+" regexfunc="\$[\w_]+" regexend="" bodybegin="" bodyend="$" sep="" />
+            <Rules regexbeg="^\s*var[\s]+" regexfunc="\$[\w_]+" regexend="" bodybegin="" bodyend="$" sep="" />
         </Group>
         <Group name="PUBLIC STATIC VAR" subgroup="" icon="7" child="7" autoexp="0" matchcase="0" fendtobbeg="" bbegtobend="" keywords="">
-            <Rules regexbeg="^\s*public\s+static\s+" regexfunc="$[\w_]+" regexend="" bodybegin="" bodyend="$" sep="" />
-            <Rules regexbeg="^\s*static\s+public\s+" regexfunc="$[\w_]+" regexend="" bodybegin="" bodyend="$" sep="" />
+            <Rules regexbeg="^\s*public\s+static\s+" regexfunc="\$[\w_]+" regexend="" bodybegin="" bodyend="$" sep="" />
+            <Rules regexbeg="^\s*static\s+public\s+" regexfunc="\$[\w_]+" regexend="" bodybegin="" bodyend="$" sep="" />
         </Group>
         <Group name="PROTECTED VAR" subgroup="" icon="4" child="4" autoexp="0" matchcase="0" fendtobbeg="" bbegtobend="" keywords="">
-            <Rules regexbeg="^\s*protected[\s]+" regexfunc="$[\w_]+" regexend="" bodybegin="" bodyend="$" sep="" />
+            <Rules regexbeg="^\s*protected[\s]+" regexfunc="\$[\w_]+" regexend="" bodybegin="" bodyend="$" sep="" />
         </Group>
         <Group name="PROTECTED STATIC VAR" subgroup="" icon="5" child="5" autoexp="0" matchcase="0" fendtobbeg="" bbegtobend="" keywords="">
-            <Rules regexbeg="^\s*protected[\s]+static[\s]+" regexfunc="$[\w_]+" regexend="" bodybegin="" bodyend="$" sep="" />
-            <Rules regexbeg="^\s*static[\s]+protected[\s]+" regexfunc="$[\w_]+" regexend="" bodybegin="" bodyend="$" sep="" />
+            <Rules regexbeg="^\s*protected[\s]+static[\s]+" regexfunc="\$[\w_]+" regexend="" bodybegin="" bodyend="$" sep="" />
+            <Rules regexbeg="^\s*static[\s]+protected[\s]+" regexfunc="\$[\w_]+" regexend="" bodybegin="" bodyend="$" sep="" />
         </Group>
         <Group name="PRIVATE VAR" subgroup="" icon="9" child="9" autoexp="0" matchcase="0" fendtobbeg="" bbegtobend="" keywords="">
-            <Rules regexbeg="^\s*private[\s]+" regexfunc="$[\w_]+" regexend="" bodybegin="" bodyend="$" sep="" />
+            <Rules regexbeg="^\s*private[\s]+" regexfunc="\$[\w_]+" regexend="" bodybegin="" bodyend="$" sep="" />
         </Group>
         <Group name="PRIVATE STATIC VAR" subgroup="" icon="10" child="10" autoexp="0" matchcase="0" fendtobbeg="" bbegtobend="" keywords="">
-            <Rules regexbeg="^\s*private[\s]+static[\s]+" regexfunc="$[\w_]+" regexend="" bodybegin="" bodyend="$" sep="" />
-            <Rules regexbeg="^\s*static[\s]+private[\s]+" regexfunc="$[\w_]+" regexend="" bodybegin="" bodyend="$" sep="" />
+            <Rules regexbeg="^\s*private[\s]+static[\s]+" regexfunc="\$[\w_]+" regexend="" bodybegin="" bodyend="$" sep="" />
+            <Rules regexbeg="^\s*static[\s]+private[\s]+" regexfunc="\$[\w_]+" regexend="" bodybegin="" bodyend="$" sep="" />
         </Group>
         <Group name="PUBLIC METHOD/FUNCTION" subgroup="" icon="19" child="19" autoexp="4" matchcase="0" fendtobbeg="" bbegtobend="" keywords="">
-            <Rules regexbeg="^\s*public\s+function[\s]+" regexfunc='[&quot;\w_]+\s*\(.*\)' regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
-            <Rules regexbeg="^\s*function[\s]+" regexfunc='[&quot;\w_]+\s*\(.*\)' regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
+            <Rules regexbeg="^\s*public\s+function[\s]+" regexfunc="[\w_]+\s*\(.*\)" regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
+            <Rules regexbeg="^\s*function[\s]+" regexfunc="[\w_]+\s*\(.*\)" regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
         </Group>
         <Group name="PUBLIC STATIC METHOD" subgroup="" icon="20" child="20" autoexp="4" matchcase="0" fendtobbeg="" bbegtobend="" keywords="">
-            <Rules regexbeg="^\s*static\s+function[\s]+" regexfunc='[&quot;\w_]+\s*\(.*\)' regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
-            <Rules regexbeg="^\s*static\s+public\s+function[\s]+" regexfunc='[&quot;\w_]+\s*\(.*\)' regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
-            <Rules regexbeg="^\s*static\s+public\s+final\s+function[\s]+" regexfunc='[&quot;\w_]+\s*\(.*\)' regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
-            <Rules regexbeg="^\s*static\s+final\s+function[\s]+" regexfunc='[&quot;\w_]+\s*\(.*\)' regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
-            <Rules regexbeg="^\s*static\s+final\s+public\s+function[\s]+" regexfunc='[&quot;\w_]+\s*\(.*\)' regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
-            <Rules regexbeg="^\s*public\s+static\s+function[\s]+" regexfunc='[&quot;\w_]+\s*\(.*\)' regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
-            <Rules regexbeg="^\s*public\s+static\s+final\s+function[\s]+" regexfunc='[&quot;\w_]+\s*\(.*\)' regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
-            <Rules regexbeg="^\s*public\s+final\s+static\s+function[\s]+" regexfunc='[&quot;\w_]+\s*\(.*\)' regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
-            <Rules regexbeg="^\s*final\s+static\s+function[\s]+" regexfunc='[&quot;\w_]+\s*\(.*\)' regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
-            <Rules regexbeg="^\s*final\s+public\s+static\s+function[\s]+" regexfunc='[&quot;\w_]+\s*\(.*\)' regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
-            <Rules regexbeg="^\s*final\s+static\s+public\s+function[\s]+" regexfunc='[&quot;\w_]+\s*\(.*\)' regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
+            <Rules regexbeg="^\s*static\s+function[\s]+" regexfunc="[\w_]+\s*\(.*\)" regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
+            <Rules regexbeg="^\s*static\s+public\s+function[\s]+" regexfunc="[\w_]+\s*\(.*\)" regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
+            <Rules regexbeg="^\s*static\s+public\s+final\s+function[\s]+" regexfunc="[\w_]+\s*\(.*\)" regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
+            <Rules regexbeg="^\s*static\s+final\s+function[\s]+" regexfunc="[\w_]+\s*\(.*\)" regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
+            <Rules regexbeg="^\s*static\s+final\s+public\s+function[\s]+" regexfunc="[\w_]+\s*\(.*\)" regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
+            <Rules regexbeg="^\s*public\s+static\s+function[\s]+" regexfunc="[\w_]+\s*\(.*\)" regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
+            <Rules regexbeg="^\s*public\s+static\s+final\s+function[\s]+" regexfunc="[\w_]+\s*\(.*\)" regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
+            <Rules regexbeg="^\s*public\s+final\s+static\s+function[\s]+" regexfunc="[\w_]+\s*\(.*\)" regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
+            <Rules regexbeg="^\s*final\s+static\s+function[\s]+" regexfunc="[\w_]+\s*\(.*\)" regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
+            <Rules regexbeg="^\s*final\s+public\s+static\s+function[\s]+" regexfunc="[\w_]+\s*\(.*\)" regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
+            <Rules regexbeg="^\s*final\s+static\s+public\s+function[\s]+" regexfunc="[\w_]+\s*\(.*\)" regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
         </Group>
         <Group name="PUBLIC ABSTRACT METHOD" subgroup="" icon="23" child="23" autoexp="4" matchcase="0" fendtobbeg="" bbegtobend="" keywords="">
-            <Rules regexbeg="^\s*abstract\s+function[\s]+" regexfunc='[&quot;\w_]+\s*\(.*\)' regexend="\s*;" bodybegin="" bodyend="" sep=";" />
-            <Rules regexbeg="^\s*abstract\s+public\s+function[\s]+" regexfunc='[&quot;\w_]+\s*\(.*\)' regexend="\s*;" bodybegin="" bodyend="" sep=";" />
-            <Rules regexbeg="^\s*public\s+abstract\s+function[\s]+" regexfunc='[&quot;\w_]+\s*\(.*\)' regexend="\s*;" bodybegin="" bodyend="" sep=";" />
+            <Rules regexbeg="^\s*abstract\s+function[\s]+" regexfunc="[\w_]+\s*\(.*\)" regexend="\s*;" bodybegin="" bodyend="" sep=";" />
+            <Rules regexbeg="^\s*abstract\s+public\s+function[\s]+" regexfunc="[\w_]+\s*\(.*\)" regexend="\s*;" bodybegin="" bodyend="" sep=";" />
+            <Rules regexbeg="^\s*public\s+abstract\s+function[\s]+" regexfunc="[\w_]+\s*\(.*\)" regexend="\s*;" bodybegin="" bodyend="" sep=";" />
         </Group>
         <Group name="PUBLIC FINAL METHOD" subgroup="" icon="22" child="22" autoexp="4" matchcase="0" fendtobbeg="" bbegtobend="" keywords="">
-            <Rules regexbeg="^\s*final\s+function[\s]+" regexfunc='[&quot;\w_]+\s*\(.*\)' regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
-            <Rules regexbeg="^\s*final\s+public\s+function[\s]+" regexfunc='[&quot;\w_]+\s*\(.*\)' regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
-            <Rules regexbeg="^\s*public\s+final\s+function[\s]+" regexfunc='[&quot;\w_]+\s*\(.*\)' regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
+            <Rules regexbeg="^\s*final\s+function[\s]+" regexfunc="[\w_]+\s*\(.*\)" regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
+            <Rules regexbeg="^\s*final\s+public\s+function[\s]+" regexfunc="[\w_]+\s*\(.*\)" regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
+            <Rules regexbeg="^\s*public\s+final\s+function[\s]+" regexfunc="[\w_]+\s*\(.*\)" regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
         </Group>
         <Group name="PROTECTED METHOD" subgroup="" icon="11" child="11" autoexp="4" matchcase="0" fendtobbeg="" bbegtobend="" keywords="">
-            <Rules regexbeg="^\s*protected\s+function[\s]+" regexfunc='[&quot;\w_]+\s*\(.*\)' regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
+            <Rules regexbeg="^\s*protected\s+function[\s]+" regexfunc="[\w_]+\s*\(.*\)" regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
         </Group>
         <Group name="PROTECTED STATIC METHOD" subgroup="" icon="12" child="12" autoexp="4" matchcase="0" fendtobbeg="" bbegtobend="" keywords="">
-            <Rules regexbeg="^\s*static\s+protected\s+function[\s]+" regexfunc='[&quot;\w_]+\s*\(.*\)' regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
-            <Rules regexbeg="^\s*static\s+protected\s+final\s+function[\s]+" regexfunc='[&quot;\w_]+\s*\(.*\)' regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
-            <Rules regexbeg="^\s*static\s+final\s+protected\s+function[\s]+" regexfunc='[&quot;\w_]+\s*\(.*\)' regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
-            <Rules regexbeg="^\s*protected\s+static\s+function[\s]+" regexfunc='[&quot;\w_]+\s*\(.*\)' regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
-            <Rules regexbeg="^\s*protected\s+static\s+final\s+function[\s]+" regexfunc='[&quot;\w_]+\s*\(.*\)' regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
-            <Rules regexbeg="^\s*protected\s+final\s+static\s+function[\s]+" regexfunc='[&quot;\w_]+\s*\(.*\)' regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
-            <Rules regexbeg="^\s*final\s+protected\s+static\s+function[\s]+" regexfunc='[&quot;\w_]+\s*\(.*\)' regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
-            <Rules regexbeg="^\s*final\s+static\s+protected\s+function[\s]+" regexfunc='[&quot;\w_]+\s*\(.*\)' regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
+            <Rules regexbeg="^\s*static\s+protected\s+function[\s]+" regexfunc="[\w_]+\s*\(.*\)" regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
+            <Rules regexbeg="^\s*static\s+protected\s+final\s+function[\s]+" regexfunc="[\w_]+\s*\(.*\)" regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
+            <Rules regexbeg="^\s*static\s+final\s+protected\s+function[\s]+" regexfunc="[\w_]+\s*\(.*\)" regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
+            <Rules regexbeg="^\s*protected\s+static\s+function[\s]+" regexfunc="[\w_]+\s*\(.*\)" regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
+            <Rules regexbeg="^\s*protected\s+static\s+final\s+function[\s]+" regexfunc="[\w_]+\s*\(.*\)" regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
+            <Rules regexbeg="^\s*protected\s+final\s+static\s+function[\s]+" regexfunc="[\w_]+\s*\(.*\)" regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
+            <Rules regexbeg="^\s*final\s+protected\s+static\s+function[\s]+" regexfunc="[\w_]+\s*\(.*\)" regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
+            <Rules regexbeg="^\s*final\s+static\s+protected\s+function[\s]+" regexfunc="[\w_]+\s*\(.*\)" regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
         </Group>
         <Group name="PROTECTED ABSTRACT METHOD" subgroup="" icon="13" child="13" autoexp="4" matchcase="0" fendtobbeg="" bbegtobend="" keywords="">
-            <Rules regexbeg="^\s*abstract\s+protected\s+function[\s]+" regexfunc='[&quot;\w_]+\s*\(.*\)' regexend="\s*;" bodybegin="" bodyend="" sep=";" />
-            <Rules regexbeg="^\s*protected\s+abstract\s+function[\s]+" regexfunc='[&quot;\w_]+\s*\(.*\)' regexend="\s*;" bodybegin="" bodyend="" sep=";" />
+            <Rules regexbeg="^\s*abstract\s+protected\s+function[\s]+" regexfunc="[\w_]+\s*\(.*\)" regexend="\s*;" bodybegin="" bodyend="" sep=";" />
+            <Rules regexbeg="^\s*protected\s+abstract\s+function[\s]+" regexfunc="[\w_]+\s*\(.*\)" regexend="\s*;" bodybegin="" bodyend="" sep=";" />
         </Group>
         <Group name="PROTECTED FINAL METHOD" subgroup="" icon="14" child="14" autoexp="4" matchcase="0" fendtobbeg="" bbegtobend="" keywords="">
-            <Rules regexbeg="^\s*final\s+protected\s+function[\s]+" regexfunc='[&quot;\w_]+\s*\(.*\)' regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
-            <Rules regexbeg="^\s*protected\s+final\s+function[\s]+" regexfunc='[&quot;\w_]+\s*\(.*\)' regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
+            <Rules regexbeg="^\s*final\s+protected\s+function[\s]+" regexfunc="[\w_]+\s*\(.*\)" regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
+            <Rules regexbeg="^\s*protected\s+final\s+function[\s]+" regexfunc="[\w_]+\s*\(.*\)" regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
         </Group>
         <Group name="PRIVATE METHOD" subgroup="" icon="16" child="16" autoexp="4" matchcase="0" fendtobbeg="" bbegtobend="" keywords="">
-            <Rules regexbeg="^\s*private\s+function[\s]+" regexfunc='[&quot;\w_]+\s*\(.*\)' regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
-            <Rules regexbeg="^\s*final\s+private\s+function[\s]+" regexfunc='[&quot;\w_]+\s*\(.*\)' regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
-            <Rules regexbeg="^\s*private\s+final\s+function[\s]+" regexfunc='[&quot;\w_]+\s*\(.*\)' regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
+            <Rules regexbeg="^\s*private\s+function[\s]+" regexfunc="[\w_]+\s*\(.*\)" regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
+            <Rules regexbeg="^\s*final\s+private\s+function[\s]+" regexfunc="[\w_]+\s*\(.*\)" regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
+            <Rules regexbeg="^\s*private\s+final\s+function[\s]+" regexfunc="[\w_]+\s*\(.*\)" regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
         </Group>
         <Group name="PRIVATE STATIC METHOD" subgroup="" icon="17" child="17" autoexp="4" matchcase="0" fendtobbeg="" bbegtobend="" keywords="">
-            <Rules regexbeg="^\s*static\s+privates+function[\s]+" regexfunc='[&quot;\w_]+\s*\(.*\)' regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
-            <Rules regexbeg="^\s*static\s+private\s+final\s+function[\s]+" regexfunc='[&quot;\w_]+\s*\(.*\)' regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
-            <Rules regexbeg="^\s*static\s+final\s+private\s+function[\s]+" regexfunc='[&quot;\w_]+\s*\(.*\)' regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
-            <Rules regexbeg="^\s*private\s+static\s+function[\s]+" regexfunc='[&quot;\w_]+\s*\(.*\)' regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
-            <Rules regexbeg="^\s*private\s+static\s+final\s+function[\s]+" regexfunc='[&quot;\w_]+\s*\(.*\)' regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
-            <Rules regexbeg="^\s*private\s+final\s+static\s+function[\s]+" regexfunc='[&quot;\w_]+\s*\(.*\)' regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
-            <Rules regexbeg="^\s*final\s+private\s+static\s+function[\s]+" regexfunc='[&quot;\w_]+\s*\(.*\)' regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
-            <Rules regexbeg="^\s*final\s+static\s+private\s+function[\s]+" regexfunc='[&quot;\w_]+\s*\(.*\)' regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
+            <Rules regexbeg="^\s*static\s+privates+function[\s]+" regexfunc="[\w_]+\s*\(.*\)" regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
+            <Rules regexbeg="^\s*static\s+private\s+final\s+function[\s]+" regexfunc="[\w_]+\s*\(.*\)" regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
+            <Rules regexbeg="^\s*static\s+final\s+private\s+function[\s]+" regexfunc="[\w_]+\s*\(.*\)" regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
+            <Rules regexbeg="^\s*private\s+static\s+function[\s]+" regexfunc="[\w_]+\s*\(.*\)" regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
+            <Rules regexbeg="^\s*private\s+static\s+final\s+function[\s]+" regexfunc="[\w_]+\s*\(.*\)" regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
+            <Rules regexbeg="^\s*private\s+final\s+static\s+function[\s]+" regexfunc="[\w_]+\s*\(.*\)" regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
+            <Rules regexbeg="^\s*final\s+private\s+static\s+function[\s]+" regexfunc="[\w_]+\s*\(.*\)" regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
+            <Rules regexbeg="^\s*final\s+static\s+private\s+function[\s]+" regexfunc="[\w_]+\s*\(.*\)" regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
         </Group>
     </Language>
 </FunctionList>

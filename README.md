@@ -16,3 +16,15 @@ Contact
 -------
 
 - [Geoffray Warnants](http://geoffray.be) (via [Twitter](http://twitter.com/gwarnants), [Blog post](http://www.geoffray.be/blog/php/patch-php5-pour-npp-function-list) or by e-mail using my twitter username @gmail.com)
+
+ChangeLog
+---------
+
+- **v0.9.1** - 2012-04-17
+    - new: added CSS language parsing rules
+    - fix: fixed properties parsing rules since Notepad++ 6.x
+    - fix: rewritten from default Function List configuration file
+    - fix: some minor improvements
+
+- **v0.9** - 2010-12-11
+    - initial release
