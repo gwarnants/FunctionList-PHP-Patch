@@ -20,7 +20,7 @@ Contact
 ChangeLog
 ---------
 
-- **v0.9.1** - 2012-04-17
+- **v0.9.1** - 2012-04-18
     - new: added CSS language parsing rules
     - fix: fixed properties parsing rules since Notepad++ 6.x
     - fix: rewritten from default Function List configuration file
