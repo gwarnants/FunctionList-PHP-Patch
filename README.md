@@ -7,7 +7,7 @@ This will make Function List looks like a great code explorer such as the Eclips
 
 Note: version 1.0 only works since **Notepad++ 6.x** !
 
-![function list](http://www.geoffray.be/blog/img/functionlist-php-patched.png)
+![function list](http://www.geoffray.be/blog/img/functionlist-patch.png)
 
 Installation
 ------------
