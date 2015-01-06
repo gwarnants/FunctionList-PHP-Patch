@@ -12,9 +12,10 @@ Note: version 1.0 only works since **Notepad++ 6.x** !
 Installation
 ------------
 
-- if necessary, [download](http://sourceforge.net/projects/npp-plugins/files/Function%20List/) and install Function List 2.1
+- if necessary, [download](http://sourceforge.net/projects/npp-plugins/files/Function%20List/) and install FunctionList_2_1_UNI_dll.zip
 - close Notepad++
-- copy `FunctionListRules.xml` and `php.bmp` into your Notepad++'s `plugins/Config` folder
+- copy `FunctionListRules.xml` into `%APPDATA%/Notepad++/plugins/Config` or into `<notepad++ install dir>/plugins/Config` depending if you chose to use %APPDATA% at Notepad++ installation.
+- copy `php.bmp` into your Notepad++'s `<notepad++ install dir>/plugins/Config` folder
 
 If you already have some custom parsing rules and want to keep them, don't overwrite `FunctionListRules.xml` or your rules will be lost. Simply insert the following blocks in your file :
 
@@ -102,7 +103,7 @@ If you already have some custom parsing rules and want to keep them, don't overw
             <Rules regexbeg='^\s*@import\s+[\w]*[\s\(&quot;]*\s*' regexfunc="[\w./-]+" regexend="[&quot;\)]+[\w\s,]*;$" bodybegin="" bodyend="" sep=";" />
         </Group>
         <Group name="SELECTOR" subgroup="" icon="19" child="19" autoexp="4" matchcase="0" fendtobbeg="" bbegtobend="" keywords="">
-            <Rules regexbeg="^\s*[\w.#\s:\[\]=~\*,\+&gt;;@\(\)-]+\s*" regexfunc="[\w.#\s:\[\]=~\*,\+&gt;;@\(\)-]*" regexend="" bodybegin="\{" bodyend="\}" sep=";" />
+            <Rules regexbeg="^\s*" regexfunc="[\w.#\s:\[\]=~\*,\+&gt;;@\(\)-]*" regexend="" bodybegin="\{" bodyend="\}" sep="\n" />
         </Group>
     </Language>
 ```
@@ -110,10 +111,13 @@ If you already have some custom parsing rules and want to keep them, don't overw
 Contact
 -------
 
-- [Geoffray Warnants](http://geoffray.be) (via [Twitter](http://twitter.com/gwarnants), [Blog](http://www.geoffray.be/blog/php/patch-php5-pour-npp-function-list) or by e-mail at <my_github_username> @gmail.com)
+- [Geoffray Warnants](http://geoffray.be) (via [Twitter](http://twitter.com/gwarnants), [Blog](http://www.geoffray.be/blog/php/patch-php5-pour-npp-function-list) or by e-mail at %my_github_username% @gmail.com)
 
 ChangeLog
 ---------
+
+- **v1.2** - 2015-01-06
+    - fix: minor CSS improvement (trim leading spaces)
 
 - **v1.1** - 2013-12-03
     - fix: improved CSS support
