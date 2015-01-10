@@ -116,8 +116,9 @@ Contact
 ChangeLog
 ---------
 
-- **v1.2** - 2015-01-06
+- **v1.2** - 2015-01-10
     - fix: minor CSS improvement (trim leading spaces)
+    - fix: better cross platform EOL support for CSS rules
 
 - **v1.1** - 2013-12-03
     - fix: improved CSS support
