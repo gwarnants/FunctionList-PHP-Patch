@@ -393,10 +393,10 @@
     <Language name="CSS" imagelistpath="plugins\Config\php.bmp">
         <CommList param1="/\*" param2="\*/" />
         <Group name="IMPORT" subgroup="" icon="2" child="2" autoexp="4" matchcase="0" fendtobbeg="" bbegtobend="" keywords="">
-            <Rules regexbeg='^\s*@import\s+[\w]*[\s\(&quot;]*\s*' regexfunc="[\w./-]+" regexend="[&quot;\)]+[\w\s,]*;$" bodybegin="" bodyend="" sep="\n" />
+            <Rules regexbeg='^\s*@import\s+[\w]*[\s\(&quot;]*\s*' regexfunc="[\w./-]+" regexend='[&quot;\)]+[\w\s,]*;$' bodybegin="" bodyend="" sep="\n|\r" />
         </Group>
         <Group name="SELECTOR" subgroup="" icon="19" child="19" autoexp="4" matchcase="0" fendtobbeg="" bbegtobend="" keywords="">
-            <Rules regexbeg="^\s*" regexfunc="[\w.#\s:\[\]=~\*,\+&gt;;@\(\)-]*" regexend="" bodybegin="\{" bodyend="\}" sep="\n" />
+            <Rules regexbeg="^\s*" regexfunc="[\w.#\s:\[\]=~\*,\+&gt;;@\(\)-]*" regexend="" bodybegin="\{" bodyend="\}" sep="\n|\r" />
         </Group>
     </Language>
     <Language name="PHP" imagelistpath="plugins\Config\php.bmp">
