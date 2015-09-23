@@ -61,6 +61,7 @@ function global_function()
  */
 abstract class Class1
 {
+
     /**
      * CLASS CONSTANTS
      */
@@ -149,7 +150,7 @@ abstract class Class1
     /**
      * PUBLIC ABSTRACT METHOD
      */
-    abstract function public_abstract_method_1();
+    abstract function public_abstract_method_1($arg1);
 
     public abstract function public_abstract_method_2();
 
@@ -301,4 +302,44 @@ abstract class Class1
     static private final function private_static_method_5()
     {
     }
+
+    /*
+     * METHOD WITH ARGUMENTS
+     */
+    function method_with_args_1($arg1, $arg2)
+    {
+    }
+
+    function method_with_args_2($arg1="hello", $arg2=false)
+    {
+    }
+
+    function method_with_args_3(array $arg1=array())
+    {
+    }
+
+    function method_with_args_4($arg1, $arg2, $arg3, $arg4, $arg5, $arg6, $arg7, $arg8)
+    {
+    }
+
+    // known issue: duplicate spaces are not ignored
+    function method_with_args_5($arg1,
+        $arg2,
+        $arg3,
+        $arg4)
+    {
+    }
+
+    /*
+     * BRACKET STYLES
+     */
+    function method_style_1() {}
+
+    function method_style_2() {
+    }
+
+    function method_style_3 ()
+    {
+    }
+
 }

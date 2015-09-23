@@ -59,37 +59,37 @@ If you already have some custom parsing rules and want to keep them, don't overw
             <Rules regexbeg="^\s*(private\s+static|static\s+private)\s+" regexfunc="\$[\w_]+" regexend="" bodybegin="" bodyend="$" sep="" />
         </Group>
         <Group name="CONSTRUCTOR" subgroup="" icon="21" child="21" autoexp="4" matchcase="0" fendtobbeg="" bbegtobend="" keywords="">
-            <Rules regexbeg="^\s*(public\s+)?function\s+" regexfunc="[__construct]+\s*\(.*\)" regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
+            <Rules regexbeg="^\s*(public\s+)?function\s+" regexfunc="(?s)__construct\s*\([^\{]*" regexend="" bodybegin="\s*\{" bodyend="\}" sep="" />
         </Group>
         <Group name="PUBLIC METHOD/FUNCTION" subgroup="" icon="19" child="19" autoexp="4" matchcase="0" fendtobbeg="" bbegtobend="" keywords="">
-            <Rules regexbeg="^\s*(public\s+)?function\s+" regexfunc="(?&lt;!\b__construct)\b(?!(?:__construct)\b)[\w_]+\s*\(.*\)" regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
+            <Rules regexbeg="^\s*(public\s+)?function\s+" regexfunc="(?s)(?&lt;!\b__construct)\b(?!(?:__construct)\b)[\w_]+\s*\([^\{]*\)" regexend="\s*" bodybegin="\{" bodyend="\}" sep="" />
         </Group>
         <Group name="PUBLIC STATIC METHOD" subgroup="" icon="20" child="20" autoexp="4" matchcase="0" fendtobbeg="" bbegtobend="" keywords="">
-            <Rules regexbeg="^\s*(public\s+)*static\s+(public\s+|final\s+)*function\s+" regexfunc='[&quot;\w_]+\s*\(.*\)' regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
+            <Rules regexbeg="^\s*(public\s+)*static\s+(public\s+|final\s+)*function\s+" regexfunc="(?s)[\w_]+\s*\([^\{]*\)" regexend="\s*" bodybegin="\{" bodyend="\}" sep="" />
         </Group>
         <Group name="PUBLIC ABSTRACT METHOD" subgroup="" icon="23" child="23" autoexp="4" matchcase="0" fendtobbeg="" bbegtobend="" keywords="">
-            <Rules regexbeg="^\s*(public\s+|static\s+)*abstract\s+(static\s+|public\s+)*?function\s+" regexfunc="[\w_]+\s*\(.*\)" regexend="\s*;" bodybegin="" bodyend="" sep=";" />
+            <Rules regexbeg="^\s*(public\s+|static\s+)*abstract\s+(static\s+|public\s+)*?function\s+" regexfunc="(?s)[\w_]+\s*\([^\{]*\)" regexend="\s*;" bodybegin="" bodyend="" sep="" />
         </Group>
         <Group name="PUBLIC FINAL METHOD" subgroup="" icon="22" child="22" autoexp="4" matchcase="0" fendtobbeg="" bbegtobend="" keywords="">
-            <Rules regexbeg="^\s*(public\s+)?final\s+(public\s+|static\s+)*function\s+" regexfunc="[\w_]+\s*\(.*\)" regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
+            <Rules regexbeg="^\s*(public\s+)?final\s+(public\s+|static\s+)*function\s+" regexfunc="(?s)[\w_]+\s*\([^\{]*\)" regexend="\s*" bodybegin="\{" bodyend="\}" sep="" />
         </Group>
         <Group name="PROTECTED METHOD" subgroup="" icon="11" child="11" autoexp="4" matchcase="0" fendtobbeg="" bbegtobend="" keywords="">
-            <Rules regexbeg="^\s*protected\s+function\s+" regexfunc="[\w_]+\s*\(.*\)" regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
+            <Rules regexbeg="^\s*protected\s+function\s+" regexfunc="(?s)[\w_]+\s*\([^\{]*\)" regexend="\s*" bodybegin="\{" bodyend="\}" sep="" />
         </Group>
         <Group name="PROTECTED STATIC METHOD" subgroup="" icon="12" child="12" autoexp="4" matchcase="0" fendtobbeg="" bbegtobend="" keywords="">
-            <Rules regexbeg="^\s*(static\s+(final\s+)?protected\s+(final\s+)?|protected\s+static\s+(final\s+)?)function\s+" regexfunc="[\w_]+\s*\(.*\)" regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
+            <Rules regexbeg="^\s*(static\s+(final\s+)?protected\s+(final\s+)?|protected\s+static\s+(final\s+)?)function\s+" regexfunc="(?s)[\w_]+\s*\([^\{]*\)" regexend="\s*" bodybegin="\{" bodyend="\}" sep="" />
         </Group>
         <Group name="PROTECTED ABSTRACT METHOD" subgroup="" icon="13" child="13" autoexp="4" matchcase="0" fendtobbeg="" bbegtobend="" keywords="">
-            <Rules regexbeg="^\s*(static\s+)?(abstract\s+(static\s+)?protected|protected\s+(static\s+)?abstract)\s+(static\s+)?function\s+" regexfunc="[\w_]+\s*\(.*\)" regexend="\s*;" bodybegin="" bodyend="" sep=";" />
+            <Rules regexbeg="^\s*(static\s+)?(abstract\s+(static\s+)?protected|protected\s+(static\s+)?abstract)\s+(static\s+)?function\s+" regexfunc="(?s)[\w_]+\s*\([^\{]*\)" regexend="\s*;" bodybegin="" bodyend="" sep="" />
         </Group>
         <Group name="PROTECTED FINAL METHOD" subgroup="" icon="14" child="14" autoexp="4" matchcase="0" fendtobbeg="" bbegtobend="" keywords="">
-            <Rules regexbeg="^\s*((protected\s+final\s+(static\s+)?)|final\s+(static\s+)?protected\s+(static\s+)?)function\s+" regexfunc="[\w_]+\s*\(.*\)" regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
+            <Rules regexbeg="^\s*((protected\s+final\s+(static\s+)?)|final\s+(static\s+)?protected\s+(static\s+)?)function\s+" regexfunc="(?s)[\w_]+\s*\([^\{]*\)" regexend="\s*" bodybegin="\{" bodyend="\}" sep="" />
         </Group>
         <Group name="PRIVATE METHOD" subgroup="" icon="16" child="16" autoexp="4" matchcase="0" fendtobbeg="" bbegtobend="" keywords="">
-            <Rules regexbeg="^\s*(final\s+)?private\s+(final\s+)?function\s+" regexfunc="[\w_]+\s*\(.*\)" regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
+            <Rules regexbeg="^\s*(final\s+)?private\s+(final\s+)?function\s+" regexfunc="(?s)[\w_]+\s*\([^\{]*\)" regexend="\s*" bodybegin="\{" bodyend="\}" sep="" />
         </Group>
         <Group name="PRIVATE STATIC METHOD" subgroup="" icon="17" child="17" autoexp="4" matchcase="0" fendtobbeg="" bbegtobend="" keywords="">
-            <Rules regexbeg="^\s*(static\s+(final\s+)?private\s+(final\s+)?|private\s+static\s+(final\s+)?)function\s+" regexfunc="[\w_]+\s*\(.*\)" regexend="\s*" bodybegin="\{" bodyend="\}" sep=";" />
+            <Rules regexbeg="^\s*(static\s+(final\s+)?private\s+(final\s+)?|private\s+static\s+(final\s+)?)function\s+" regexfunc="(?s)[\w_]+\s*\([^\{]*\)" regexend="\s*" bodybegin="\{" bodyend="\}" sep="" />
         </Group>
     </Language>
 ```
@@ -115,6 +115,9 @@ Contact
 
 ChangeLog
 ---------
+
+- **v1.3** - 2015-09-23
+    - fix: PHP functions with arguments split across multiple lines
 
 - **v1.2** - 2015-01-10
     - fix: minor CSS improvement (trim leading spaces)
